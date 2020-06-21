@@ -15,9 +15,6 @@ import { loadFile } from "./utils/util";
 
 import "../css/kifuforjs.css";
 
-// tslint:disable-next-line:no-var-requires
-const DevTools = process.env.NODE_ENV !== "production" ? require("mobx-react-devtools").default : () => <span />;
-
 export interface IProps {
     filePath?: string;
     kifu?: string;
@@ -74,7 +71,6 @@ class Kifu extends React.Component<IProps, {}> {
                         <tr>
                             <td>
                                 <Preview generator={previewGenerator} />
-                                <DevTools />
                                 <div className="inlineblock players">
                                     <Hand kifuStore={this.kifuStore} defaultColor={1} />
                                     <LeftControl kifuStore={this.kifuStore} />
