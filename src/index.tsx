@@ -21,11 +21,7 @@ export function load(filePath: string, id?: string): Promise<KifuStore> {
 function loadCommon(filePath, kifu, id): Promise<KifuStore> {
     return new Promise((resolve) => {
         if (!id) {
-            id =
-                "kifuforjs_" +
-                Math.random()
-                    .toString(36)
-                    .slice(2);
+            id = "kifuforjs_" + Math.random().toString(36).slice(2);
             document.write("<div id='" + id + "'></div>");
         }
         onDomReady(() => {

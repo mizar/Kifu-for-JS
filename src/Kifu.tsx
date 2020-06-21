@@ -1,8 +1,8 @@
-import {observer} from "mobx-react";
+import { observer } from "mobx-react";
 import * as React from "react";
-import {DragDropContext, DropTarget} from "react-dnd";
-import {NativeTypes} from "react-dnd-html5-backend";
-import MultiBackend, {Preview} from "react-dnd-multi-backend";
+import { DragDropContext, DropTarget } from "react-dnd";
+import { NativeTypes } from "react-dnd-html5-backend";
+import MultiBackend, { Preview } from "react-dnd-multi-backend";
 import HTML5toTouch from "react-dnd-multi-backend/lib/HTML5toTouch";
 
 import Board from "./Board";
@@ -11,12 +11,12 @@ import Hand from "./Hand";
 import Info from "./Info";
 import LeftControl from "./LeftControl";
 import KifuStore from "./stores/KifuStore";
-import {loadFile} from "./utils/util";
+import { loadFile } from "./utils/util";
 
 import "../css/kifuforjs.css";
 
 // tslint:disable-next-line:no-var-requires
-const DevTools = process.env.NODE_ENV !== "production" ? require("mobx-react-devtools").default : () => <span />;
+const DevTools = () => <span />;
 
 export interface IProps {
     filePath?: string;
@@ -37,7 +37,7 @@ class Kifu extends React.Component<IProps, {}> {
     }
 
     public componentDidMount() {
-        const {filePath} = this.props;
+        const { filePath } = this.props;
         let loadPromise;
         if (filePath) {
             loadPromise = this.kifuStore.loadFile(filePath);
@@ -46,7 +46,7 @@ class Kifu extends React.Component<IProps, {}> {
         }
         loadPromise.catch(() => {
             // ok
-        })
+        });
     }
 
     public componentWillReceiveProps(nextProps: IProps) {
@@ -58,7 +58,7 @@ class Kifu extends React.Component<IProps, {}> {
         }
         loadPromise.catch(() => {
             // ok
-        })
+        });
     }
 
     public render() {
